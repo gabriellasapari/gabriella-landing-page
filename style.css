@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  color: #e6d6c8;
+  min-height: 100vh;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: url("assets/bg.png") center/cover no-repeat;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  padding: 60px 0 40px;
+}
+
+.name {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #cbb6a0;
+  margin-top: 8px;
+}
+
+nav {
+  margin-top: 30px;
+}
+
+nav a {
+  margin: 0 15px;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+nav a.active {
+  opacity: 1;
+  border-bottom: 1px solid #cbb6a0;
+}
+
+.content {
+  margin-top: 60px;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.profile img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 2px solid #cbb6a0;
+}
+
+.bio p {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+section {
+  margin-top: 80px;
+}
+
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.card {
+  background: #111;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product {
+  background: #111;
+  padding: 25px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+footer {
+  margin-top: 100px;
+  padding: 40px 0;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cards,
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
