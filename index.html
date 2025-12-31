@@ -1,73 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Gabriella Anastasia Sapari</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-</head>
-<body>
+import React, { useEffect } from 'react';
+import FloralOverlay from '../components/landing/FloralOverlay';
+import HeroSection from '../components/landing/HeroSection';
+import AboutSection from '../components/landing/AboutSection';
+import PortfolioSection from '../components/landing/PortfolioSection';
+import DigitalProductsSection from '../components/landing/DigitalProductsSection';
+import FooterSection from '../components/landing/FooterSection';
 
-<div class="overlay"></div>
+export default function Home() {
+  // Suppress any authentication errors for this public landing page
+  useEffect(() => {
+    const originalError = console.error;
+    console.error = (...args) => {
+      if (args[0]?.toString().includes('Base44Error')) return;
+      originalError(...args);
+    };
+    return () => {
+      console.error = originalError;
+    };
+  }, []);
 
-<header class="container">
-  <h1 class="name">Gabriella Anastasia Sapari</h1>
-  <p class="subtitle">Virtual Assistant | Digital Creator</p>
-
-  <nav>
-    <a class="active">About Me</a>
-    <a>Portfolio</a>
-    <a>Products</a>
-    <a>Contact</a>
-  </nav>
-</header>
-
-<main class="container content">
-
-  <section class="about">
-    <div class="profile">
-      <img src="profil.jpeg" alt="Gabriella">
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+      {/* Floral overlay and particles */}
+      <FloralOverlay />
+      
+      {/* Main content */}
+      <main className="relative z-10">
+        <HeroSection />
+        <AboutSection />
+        <PortfolioSection />
+        <DigitalProductsSection />
+        <FooterSection />
+      </main>
+      
+      {/* Custom styles for fonts */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+        
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #0a0a0a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: #d4af7a40;
+          border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: #d4af7a60;
+        }
+        
+        /* Selection color */
+        ::selection {
+          background: #d4af7a40;
+          color: #f5f0e8;
+        }
+      `}</style>
     </div>
-
-    <div class="bio">
-      <p>
-        Website ini adalah ruang profesional saya untuk membangun karier digital:
-        sebagai Virtual Assistant, Email Marketing Specialist, dan Digital Creator.
-        Fokus utama saya adalah real estate, digital products, dan affiliate marketing.
-      </p>
-    </div>
-  </section>
-
-  <section class="portfolio">
-    <h2>Virtual Assistant & Email Marketing for Real Estate</h2>
-
-    <div class="cards">
-      <div class="card">
-        <img src="assets/preview1.png">
-      </div>
-      <div class="card">
-        <img src="assets/preview1.png">
-      </div>
-    </div>
-  </section>
-
-  <section class="products">
-    <h2>Digital Products & Affiliate Finds</h2>
-
-    <div class="product-grid">
-      <div class="product">Productivity Planner</div>
-      <div class="product">Canva Template Bundle</div>
-      <div class="product">Social Media Kit</div>
-      <div class="product">Email Swipe Files</div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <p>© 2026 Gabriella Anastasia Sapari</p>
-</footer>
-
-</body>
-</html>
+  );
+}
